@@ -3,7 +3,7 @@
     "displayName": "Claude Usage",
     "description": "Shows Claude usage utilization in the VS Code status bar.",
     "version": "0.0.1",
-    "publisher": "arik.aizikovich",
+    "publisher": "ArikAizikovich",
     "engines": { "vscode": "^1.90.0" },
     "repository": {
         "type": "git",
