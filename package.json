@@ -1,0 +1,76 @@
+{
+    "name": "claude-usage",
+    "displayName": "Claude Usage",
+    "description": "Shows Claude usage utilization in the VS Code status bar.",
+    "version": "0.0.1",
+    "publisher": "arik.aizikovich",
+    "engines": { "vscode": "^1.90.0" },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/E-FL/claude-usage"
+    },
+    "bugs": {
+        "url": "https://github.com/E-FL/claude-usage/issues"
+    },
+    "homepage": "https://github.com/E-FL/claude-usage#readme",
+    "license": "MIT",
+    "keywords": ["claude", "usage", "anthropic", "api", "monitoring", "status-bar"],
+    "categories": ["Other"],
+    "activationEvents": ["onStartupFinished"],
+    "main": "./out/extension.js",
+    "contributes": {
+      "commands": [
+        { "command": "claudeUsage.configure", "title": "Claude Usage: Configure" },
+        { "command": "claudeUsage.refresh", "title": "Claude Usage: Refresh Now" },
+        { "command": "claudeUsage.clearSessionKey", "title": "Claude Usage: Clear sessionKey" },
+        { "command": "claudeUsage.toggleMode", "title": "Claude Usage: Toggle Used/Left" },
+        { "command": "claudeUsage.debug", "title": "Claude Usage: Debug Info" },
+        { "command": "claudeUsage.editOrganizationCode", "title": "Claude Usage: Edit organization_code" },
+        { "command": "claudeUsage.editSessionKey", "title": "Claude Usage: Edit sessionKey" },
+        { "command": "claudeUsage.openSettings", "title": "Claude Usage: Open Settings" }
+      ],
+      "configuration": {
+        "title": "Claude Usage",
+        "properties": {
+          "claudeUsage.organizationCode": {
+            "type": "string",
+            "default": "",
+            "description": "Claude organization_code used in /api/organizations/{org}/usage."
+          },
+          "claudeUsage.mode": {
+            "type": "string",
+            "enum": ["left", "used"],
+            "default": "left",
+            "description": "What to show in the status bar."
+          },
+          "claudeUsage.refreshSeconds": {
+            "type": "number",
+            "default": 60,
+            "minimum": 30,
+            "description": "Auto refresh interval in seconds."
+          },
+          "claudeUsage.autoRefresh": {
+            "type": "boolean",
+            "default": true,
+            "description": "Automatically refresh Claude usage in the background."
+          }
+        }
+      }
+    },
+    "scripts": {
+      "compile": "tsc -p .",
+      "watch": "tsc -watch -p .",
+      "package": "vsce package"
+    },
+    "dependencies": {
+      "axios": "^1.6.0",
+      "undici": "^6.0.0"
+    },
+    "devDependencies": {
+      "@types/node": "^20.0.0",
+      "@types/vscode": "^1.90.0",
+      "typescript": "^5.4.0",
+      "vsce": "^2.15.0"
+    }
+  }
+  
